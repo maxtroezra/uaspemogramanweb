@@ -1,18 +1,15 @@
 <?php
-
 session_start();
-if(!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
+if (!isset($_SESSION["user"])) {
+   header("Location: login.php");
 }
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Website Survey</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -29,10 +26,6 @@ if(!isset($_SESSION["login"])) {
             <a href="survey.php" class="button">
                 <span style='font-size:30px;'>&#10004;</span><br>
                 Form Pengisian Survey Mahasiswa
-            </a>
-            <a href="#" class="button">
-                <span style='font-size:30px;'>&#10067;</span><br>
-                Hasil survey beberapa mahasiswa
             </a>
         </div>
     </div>

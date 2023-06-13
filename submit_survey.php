@@ -1,37 +1,26 @@
 <?php
-// Menghubungkan ke database
-$servername = "localhost";
-$username = "username_db";
-$password = "password_db";
-$dbname = "nama_database";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Ambil data yang dikirim melalui form
+    $name = $_POST["name"];
+    $nim = $_POST["nim"];
+    $alamat = $_POST["alamat"];
+    $question1 = $_POST["question1"];
+    $question2 = $_POST["question2"];
+    $question3 = $_POST["question3"];
+    $question4 = $_POST["question4"];
+    $question5 = $_POST["question5"];
+    $question6 = $_POST["question6"];
+    $question7 = $_POST["question7"];
+    $question8 = $_POST["question8"];
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Koneksi ke database gagal: " . $conn->connect_error);
-}
-
-// Mengambil data dari formulir survey
-$name = $_POST['name'];
-$nim = $_POST['nim'];
-$alamat = $_POST['alamat'];
-$question1 = $_POST['question1'];
-$question2 = $_POST['question2'];
-$question3 = $_POST['question3'];
-$question4 = $_POST['question4'];
-$question5 = $_POST['question5'];
-$question6 = $_POST['question6'];
-$question7 = $_POST['question7'];
-$question8 = $_POST['question8'];
-
-// Menyimpan data ke tabel dalam database
-$sql = "INSERT INTO survey_results (name, nim, alamat, question1, question2, question3, question4, question5, question6, question7, question8)
-        VALUES ('$name', '$nim', '$alamat', '$question1', '$question2', '$question3', '$question4', '$question5', '$question6', '$question7', '$question8')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Data survey berhasil disimpan";
+    // Lakukan sesuatu dengan data yang diterima, misalnya simpan ke database
+    // ...
+    
+    // Contoh tampilan setelah data berhasil disimpan
+    echo "<h1>Data survey berhasil disimpan</h1>";
+    echo "<p>Terima kasih, $name, telah mengisi survey.</p>";
 } else {
-    echo "Terjadi kesalahan: " . $conn->error;
+    // Jika akses langsung ke file submit_survey.php tanpa melalui form, redirect ke halaman lain atau tampilkan pesan error
+    echo "Error: Invalid request";
 }
-
-$conn->close();
 ?>
